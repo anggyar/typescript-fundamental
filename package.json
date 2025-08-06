@@ -1,0 +1,35 @@
+{
+    "name": "typescript-fundamental",
+    "version": "1.0.0",
+    "description": "Learning TypeScript Fundamentals",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "jest": {
+        "transform": {
+            "^.+\\.[t|j]sx?$": "babel-jest"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/anggyar/typescript-fundamental.git"
+    },
+    "author": "Anggyar Muhamad Yahya",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/anggyar/typescript-fundamental/issues"
+    },
+    "homepage": "https://github.com/anggyar/typescript-fundamental#readme",
+    "type": "module",
+    "devDependencies": {
+        "@babel/preset-env": "^7.28.0",
+        "@babel/preset-typescript": "^7.27.1",
+        "@jest/globals": "^30.0.5",
+        "@types/jest": "^30.0.0",
+        "babel-jest": "^30.0.5",
+        "jest": "^30.0.5",
+        "ts-jest": "^29.4.1",
+        "typescript": "^5.9.2"
+    }
+}
