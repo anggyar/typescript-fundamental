@@ -1,113 +1,72 @@
-import type { Employee, Manager } from "../src/employee";
-import type { Person } from "../src/person";
-import type { Seller } from "../src/seller";
-
 describe("interface", () => {
     it("should supported in typescript", () => {
-        const seller: Seller = {
+        const seller = {
             id: 1,
             name: "Anggyar Muhamad Yahya",
             nib: "1234567890",
             npwp: "0987654321",
         };
-
         seller.name = "Toko Jadi Ria";
         // seller.nib = "0987654321"; // This line would cause an error because nib is readonly
     });
-
     it("should support function interface", () => {
-        interface AddFunction {
-            (value1: number, value2: number): number;
-        }
-
-        const add: AddFunction = (value1: number, value2: number): number => {
+        const add = (value1, value2) => {
             return value1 + value2;
         };
-
         expect(add(1, 2)).toBe(3);
     });
-
     it("should support indexable interface", () => {
-        interface StringArray {
-            [index: number]: string;
-        }
-
-        const myArray: StringArray = ["Anggya", "Budi", "Christantyo"];
+        const myArray = ["Anggya", "Budi", "Christantyo"];
         console.info(myArray);
     });
-
     it("should suppport indexable interface for non number index", () => {
-        interface StringDictionary {
-            [key: string]: string;
-        }
-
-        const myDictionary: StringDictionary = {
+        const myDictionary = {
             name: "Anggyar",
             hobby: "Coding",
             city: "Jakarta",
         };
-
         expect(myDictionary["name"]).toBe("Anggyar");
         expect(myDictionary["hobby"]).toBe("Coding");
         expect(myDictionary["city"]).toBe("Jakarta");
     });
-
     it("should support extends interface", () => {
-        const employee: Employee = {
+        const employee = {
             id: "1",
             name: "Anggyar Muhamad Yahya",
             division: "Engineering",
         };
-
-        const manager: Manager = {
+        const manager = {
             id: "2",
             name: "Budi Santoso",
             division: "Engineering",
             numberOfSubordinates: 5,
         };
-
         console.info(employee);
         console.info(manager);
     });
-
     it("should support function in interface", () => {
-        const person: Person = {
+        const person = {
             name: "Anggyar Muhamad Yahya",
-            sayHello(name: string): string {
+            sayHello(name) {
                 return `Hello ${name}, my name is ${this.name}`;
             },
         };
-
         console.info(person.sayHello("Budi"));
     });
-
     it("Should support intersection in interface", () => {
-        interface HasName {
-            name: string;
-        }
-
-        interface HasId {
-            number: string;
-        }
-
-        type Person = HasName & HasId;
-
-        const person: Person = {
+        const person = {
             name: "Anggyar Muhamad Yahya",
             number: "1234567890",
         };
-
         console.info(person);
     });
-
     it("should support type assertion", () => {
-        const person: any = {
+        const person = {
             name: "Anggyar Muhamad Yahya",
             age: 30,
         };
-
-        const person2: Person = person as Person;
-
+        const person2 = person;
         console.info(person2);
     });
 });
+export {};
