@@ -57,4 +57,31 @@ describe("Function in typescript", () => {
         expect(callMe(10)).toBe(100);
         expect(callMe("Anggyar")).toBe("ANGGYAR");
     });
+
+    it("should function as parameter", () => {
+        const sayHello = (
+            name: string,
+            filter: (name: string) => string
+        ): string => {
+            return `Hello ${filter(name)}`;
+        };
+
+        const toUpper = (name: string): string => {
+            return name.toUpperCase();
+        };
+
+        expect(sayHello("Anggyar", toUpper)).toBe("Hello ANGGYAR");
+
+        expect(
+            sayHello("Anggyar", function (name: string): string {
+                return name.toUpperCase();
+            })
+        ).toBe("Hello ANGGYAR");
+
+        expect(
+            sayHello("Anggyar", (name: string): string => {
+                return name.toUpperCase();
+            })
+        ).toBe("Hello ANGGYAR");
+    });
 });
