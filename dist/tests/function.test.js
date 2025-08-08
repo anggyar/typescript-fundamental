@@ -26,7 +26,6 @@ describe("Function in typescript", () => {
         };
         expect(sum(1, 2, 3, 4, 5)).toBe(15);
     });
-
     it("should support optional parameter", () => {
         const sayHello = (firsName, lastName) => {
             return `Hello ${firsName} ${lastName ? lastName : ""}`;
@@ -34,17 +33,32 @@ describe("Function in typescript", () => {
         expect(sayHello("Anggyar")).toBe("Hello Anggyar ");
         expect(sayHello("Anggyar", "Prabowo")).toBe("Hello Anggyar Prabowo");
     });
-
     it("should support function overloading", () => {
         function callMe(value) {
             if (typeof value === "string") {
                 return value.toUpperCase();
-            } else if (typeof value === "number") {
+            }
+            else if (typeof value === "number") {
                 return value * 10;
             }
         }
         expect(callMe(10)).toBe(100);
         expect(callMe("Anggyar")).toBe("ANGGYAR");
+    });
+    it("should function as parameter", () => {
+        const sayHello = (name, filter) => {
+            return `Hello ${filter(name)}`;
+        };
+        const toUpper = (name) => {
+            return name.toUpperCase();
+        };
+        expect(sayHello("Anggyar", toUpper)).toBe("Hello ANGGYAR");
+        expect(sayHello("Anggyar", function (name) {
+            return name.toUpperCase();
+        })).toBe("Hello ANGGYAR");
+        expect(sayHello("Anggyar", (name) => {
+            return name.toUpperCase();
+        })).toBe("Hello ANGGYAR");
     });
 });
 export {};
